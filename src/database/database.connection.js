@@ -17,7 +17,7 @@ db.connect((error, client, done) => {
     if (error) {
         console.error('Error connecting to PostgresSQL', error);
     } else {
-        console.log('Connected to PostgresSQL');
+        console.log('Connected to PostgreSQL');
         done();
     }
 });
