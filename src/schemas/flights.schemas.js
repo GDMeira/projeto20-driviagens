@@ -9,3 +9,9 @@ export const flightsSchema = Joi.object({
     destination: Joi.number().min(1).required(),
     date: Joi.date().format("DD-MM-YYYY").required()
 })
+
+export const travelSchema = Joi.object({
+    passengerId: Joi.number().min(1).required(),
+    flightId: Joi.number().min(1).required()
+})
+
