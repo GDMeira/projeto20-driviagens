@@ -7,7 +7,22 @@ function createFlight(origin, destination, date) {
     `, [origin, destination, date]);
 }
 
+function readFlightById(id) {
+    return db.query(`/* SQL */
+        SELECT * FROM flights WHERE id = $1;
+    `, [id]);
+}
+
+function createTravel(passengerId, flightId) {
+    return db.query(`/* SQL */
+        INSERT INTO travels (passenger_id, flight_id) VALUES ($1, $2);
+    `, [passengerId, flightId]);
+
+}
+
 export const flightsRepositoriy = {
     createFlight,
-
+    readFlightById,
+    createTravel,
+    
 }

@@ -7,7 +7,14 @@ function createPassenger(passenger) {
     `, [passenger.firstName, passenger.lastName]);
 }
 
+function readPassengerById(passengerId) {
+    return db.query(`/* SQL */
+        SELECT * FROM passengers WHERE id = $1;
+    `, [passengerId]);
+}
+
 export const passengerRepository = {
     createPassenger,
-
+    readPassengerById,
+    
 }
