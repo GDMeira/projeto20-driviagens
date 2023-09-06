@@ -7,7 +7,7 @@ function createPassenger(passenger) {
     `, [passenger.firstName, passenger.lastName]);
 }
 
-export const passengerRepositories = {
+export const passengerRepository = {
     createPassenger,
 
 }

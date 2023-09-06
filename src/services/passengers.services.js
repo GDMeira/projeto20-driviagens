@@ -1,8 +1,8 @@
-import { passengerRepositories } from "../repositories/passengers.repositories.js"
+import { passengerRepository } from "../repositories/passengers.repositories.js"
 
 
 async function savePassenger(passenger) {
-    const result = await passengerRepositories.createPassenger(passenger);
+    const result = await passengerRepository.createPassenger(passenger);
 
     return result;
 }

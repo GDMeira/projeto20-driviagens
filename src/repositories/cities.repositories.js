@@ -13,8 +13,15 @@ function readCityByName(city) {
     `, [city]);
 }
 
+function readCityById(id) {
+    return db.query(`/* SQL */
+        SELECT * FROM cities WHERE id = $1;
+    `, [id]);
+}
+
 export const citiesRepository = {
     createCity,
     readCityByName,
-
+    readCityById,
+    
 }
