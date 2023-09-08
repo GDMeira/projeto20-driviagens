@@ -10,4 +10,6 @@ const passengersRouter = Router();
 passengersRouter.post('/passengers', stringStripHtml, schemaValidation(passengerSchema),
     passengersController.postPassenger);
 
+passengersRouter.get('/passengers/travels', passengersController.getPassengersTravels);
+
 export default passengersRouter
