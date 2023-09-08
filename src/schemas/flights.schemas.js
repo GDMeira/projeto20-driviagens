@@ -15,3 +15,4 @@ export const travelSchema = Joi.object({
     flightId: Joi.number().min(1).required()
 })
 
+export const dateSchema = Joi.date().format("DD-MM-YYYY");
