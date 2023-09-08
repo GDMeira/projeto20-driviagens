@@ -3,17 +3,19 @@ import { passengerServices } from "../services/passengers.services.js";
 
 
 async function postPassenger(req, res) {
-    try {
-        await passengerServices.savePassenger(req.body);
+    await passengerServices.savePassenger(req.body);
 
-        res.sendStatus(httpStatus.OK);
-    } catch (error) {
-        res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
-    }
+    res.sendStatus(httpStatus.CREATED);
 }
 
+async function getPassengersTravels(req, res) {
+    const passengers = await passengerServices.readTravelsPassengers(req.query);
+
+    res.send(passengers);
+}
 
 export const passengersController = {
     postPassenger,
+    getPassengersTravels,
 
 }

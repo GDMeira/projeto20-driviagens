@@ -26,13 +26,14 @@ function makeDynamicQuery(queryParams) {
     let pos = 2;
 
     if (origin) {
-        query += ` AND origin = (SELECT id FROM cities WHERE name ILIKE $${pos})`;
+        query += ` AND origin = ANY(SELECT id FROM cities WHERE name ILIKE '%' || $${pos} || '%')`;
+        console.log(query);
         values.push(origin);
         pos++;
     }
 
     if (destination) {
-        query += ` AND destination = (SELECT id FROM cities WHERE name ILIKE $${pos})`;
+        query += ` AND destination = ANY(SELECT id FROM cities WHERE name ILIKE '%' || $${pos} || '%')`;
         values.push(destination);
         pos++;
     }

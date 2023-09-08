@@ -32,10 +32,19 @@ const badRequest = (msg = "Requisição inválida.") => {
     };
 }
 
+const internalError = (msg = "Erro interno do servidor.") => {
+    return {
+        type: 'internalError', 
+        message: msg,
+        statusCode: httpStatus.INTERNAL_SERVER_ERROR
+    };
+}
+
 export const error = {
     conflict,
     notFound,
     unprocessableEntity,
     badRequest,
-
+    internalError,
+    
 }

@@ -13,8 +13,20 @@ function readPassengerById(passengerId) {
     `, [passengerId]);
 }
 
+function readTravelsPassengers(name) {
+    return db.query(`/* SQL */
+        SELECT first_name || ' ' || last_name AS passenger, COUNT(travels.id) AS travels
+        FROM passengers
+        LEFT JOIN travels ON travels.passenger_id =  passengers.id
+        WHERE first_name ILIKE '%' || $1 || '%' OR last_name ILIKE '%' || $1 || '%'
+        GROUP BY passenger
+        ORDER BY travels DESC;
+    `, [name]);
+}
+
 export const passengerRepository = {
     createPassenger,
     readPassengerById,
+    readTravelsPassengers,
     
 }
