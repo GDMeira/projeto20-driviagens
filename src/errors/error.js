@@ -1,18 +1,41 @@
-const notFound = (item = "item") => {
-    return {type: 'notFound', message: `Não foi possível encontrar essa(e) ${item}`};
+import httpStatus from "http-status";
+
+const notFound = (msg = "Não foi possível encontrar o parâmetro requisitado.") => {
+    return {
+        type: 'notFound', 
+        message: msg,
+        statusCode: httpStatus.NOT_FOUND
+    };
 }
 
-const conflict = (item = "item") => {
-    return {type: 'conflict', message: `Ocorreu um conflito ao processar essa(e) ${item}`};
+const conflict = (msg = "Ocorreu um conflito, essa entrada já existe.") => {
+    return {
+        type: 'conflict', 
+        message: msg,
+        statusCode: httpStatus.CONFLICT
+    };
 }
 
-const unprocessableEntity = (item = "item") => {
-    return {type: 'unprocessableEntity', message: `Essa(e) ${item} é inválido.`};
+const unprocessableEntity = (msg = "Dados de entrada não estão no formato esperado.") => {
+    return {
+        type: 'unprocessableEntity', 
+        message: msg,
+        statusCode: httpStatus.UNPROCESSABLE_ENTITY
+    };
+}
+
+const badRequest = (msg = "Requisição inválida.") => {
+    return {
+        type: 'badRequest', 
+        message: msg,
+        statusCode: httpStatus.BAD_REQUEST
+    };
 }
 
 export const error = {
     conflict,
     notFound,
     unprocessableEntity,
-    
+    badRequest,
+
 }

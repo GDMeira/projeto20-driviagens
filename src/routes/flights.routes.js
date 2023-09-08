@@ -13,4 +13,6 @@ flightsRouter.post('/flights', stringStripHtml, schemaValidation(flightsSchema),
 flightsRouter.post('/travels', stringStripHtml, schemaValidation(travelSchema),
     flightsController.postTravel);
 
+flightsRouter.get('/flights', flightsController.getFlights);
+
 export default flightsRouter
