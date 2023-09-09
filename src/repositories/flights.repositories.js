@@ -65,7 +65,7 @@ function readFlights(today, queryParams) {
             (
                 SELECT name FROM cities WHERE id = flights.destination 
             ) AS destination,
-            TO_CHAR(date, 'DD-MM-YYYY') 
+            TO_CHAR(date, 'DD-MM-YYYY') AS date
         FROM flights
         WHERE date > $1 ${query}
         ORDER BY date;
