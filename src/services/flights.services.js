@@ -34,7 +34,7 @@ async function createFlight({ origin, destination, date }) {
         validateDate(date)
     ])
 
-    const result = await flightsRepositoriy.createFlight(origin, destination, date);
+    const result = await flightsRepositoriy.createFlight(origin, destination, dayjs(date, "DD-MM-YYYY").format("YYYY-MM-DD"));
 
     return result;
 }
