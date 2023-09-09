@@ -27,7 +27,6 @@ function makeDynamicQuery(queryParams) {
 
     if (origin) {
         query += ` AND origin = ANY(SELECT id FROM cities WHERE name ILIKE '%' || $${pos} || '%')`;
-        console.log(query);
         values.push(origin);
         pos++;
     }
@@ -40,13 +39,13 @@ function makeDynamicQuery(queryParams) {
 
     if (biggerDate) {
         query += ` AND date < $${pos}`;
-        values.push(biggerDate);
+        values.push(biggerDate.split('-').reverse().join('-'));
         pos++;
     }
 
     if (smallerDate) {
         query += ` AND date > $${pos}`;
-        values.push(smallerDate);
+        values.push(smallerDate.split('-').reverse().join('-'));
         pos++;
     }
 

@@ -83,7 +83,7 @@ function validateParams(queryParams) {
 
 async function readFlights(queryParams) {
     const params = validateParams(queryParams);
-    const today = dayjs().format('DD-MM-YYYY');
+    const today = dayjs().format('YYYY-MM-DD');
 
     const flights = await flightsRepositoriy.readFlights(today, params);
 
