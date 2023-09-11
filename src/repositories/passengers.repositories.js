@@ -13,15 +13,19 @@ function readPassengerById(passengerId) {
     `, [passengerId]);
 }
 
-function readTravelsPassengers(name) {
+function readTravelsPassengers(name, page) {
+    const offset = 10 * page;
+
     return db.query(`/* SQL */
         SELECT first_name || ' ' || last_name AS passenger, COUNT(travels.id) AS travels
         FROM passengers
         LEFT JOIN travels ON travels.passenger_id =  passengers.id
         WHERE first_name ILIKE '%' || $1 || '%' OR last_name ILIKE '%' || $1 || '%'
         GROUP BY passenger
-        ORDER BY travels DESC;
-    `, [name]);
+        ORDER BY travels DESC
+        OFFSET $2
+        LIMIT 10
+    `, [name, offset]);
 }
 
 export const passengerRepository = {
